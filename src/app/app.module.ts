@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListarComponent } from './crud/listar/listar.component';
+import { FormsModule } from '@angular/forms';
+import { RegistrarComponent } from './crud/registrar/registrar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListarComponent,
+    RegistrarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

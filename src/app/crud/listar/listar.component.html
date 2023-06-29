@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Albums</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>INTERPRETE</th>
+                    <th>FECHA</th>
+                    <th>GENERO</th>
+                    <th>PRECIO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let album of albums" class="text-center">
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.titulo }}</td>
+                    <td>{{ album.interprete }}</td>
+                    <td>{{ album.fecha | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ album.genero }}</td>
+                    <td>{{ album.precio | currency}}</td>
+                    <td>
+                        <button (click)="editar(album.id)" class="btn btn-warning">Editar</button>
+                        <button (click)="eliminar(album)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

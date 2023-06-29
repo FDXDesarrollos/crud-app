@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'crud-front';
+  title = 'C-R-U-D';
+
+  constructor(private router:Router){}
+
+  listar(){
+    this.router.navigate(['listar']);
+  }
+
+  agregar(): void{
+    localStorage.setItem('idAlbum', '0');
+    this.router.navigate(['registrar']);
+  }  
 }
