@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'C-R-U-D';
+  title = 'C - R - U - D';
 
   constructor(private router:Router){}
 
@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   agregar(): void{
-    localStorage.setItem('idAlbum', '0');
-    this.router.navigate(['registrar']);
+    //localStorage.setItem('idAlbum', '0');
+    this.router.navigate(['registrar/0']);
   }  
 }

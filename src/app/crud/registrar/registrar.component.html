@@ -4,7 +4,7 @@
             <h3>{{ titulo }}</h3>
         </div>
         <div class="card-body">
-            <form ngNativeValidate>
+            <form (ngSubmit)="registrar(modelAlbum)" novalidate #form="ngForm">
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
                     <input type="text" id="titulo" name="titulo" class="form-control" [(ngModel)]="modelAlbum.titulo" required />
@@ -30,7 +30,7 @@
                     <input type="number" id="precio" name="precio" class="form-control" [(ngModel)]="modelAlbum.precio" required />
                 </div>
                 
-                <button class="btn btn-primary" (click)="registrar(modelAlbum)">Enviar</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="!form.valid">Enviar</button>
             </form>
         </div>
     </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Album } from 'src/app/modelo/album';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 import { ServiceService } from 'src/app/service/service.service';
+import { Album } from 'src/app/modelo/album';
 
 
 @Component({
@@ -13,18 +15,21 @@ export class RegistrarComponent implements OnInit {
   modelAlbum = new Album();
   titulo!: string;
 
-  constructor(private router: Router, private service: ServiceService) { }
+  constructor(private router: Router, 
+              private service: ServiceService,
+              private activateRoute: ActivatedRoute,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem('idAlbum');
-    console.log('===> ' + id);
+    //let id = localStorage.getItem('idAlbum');
+    let id = this.activateRoute.snapshot.params["id"];
 
     if(Number(id) == 0){
       this.titulo = "Nuevo Album";
     }
     else{
       this.titulo = "Editar Album";
-      this.service.getAlbumId(Number(id)).subscribe(data => { this.modelAlbum = data });
+      this.service.detalle(Number(id)).subscribe(data => { this.modelAlbum = data });
     }
   }
 
@@ -32,20 +37,27 @@ export class RegistrarComponent implements OnInit {
     album.titulo = album.titulo.toUpperCase();
     album.interprete = album.interprete.toUpperCase();
     album.genero = album.genero.toUpperCase();
-    
-    console.log('===> ' + album.id );
 
     if(album.id == 0){
-      this.service.agregar(album).subscribe(data => {
-        console.log( data );
-        alert('Información registrada');
-        this.router.navigate(['listar']);
+      this.service.agrega(album).subscribe(data => {
+        console.log( album );
+        this.toastr.success('Información registrada','Exito !!!');
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Error');
       });
     }
     else{
-      this.service.actualizar(album).subscribe(data => { this.modelAlbum = data });
-      alert('Información actualizada');
-      this.router.navigate(['listar']);
+      this.service.actualiza(album).subscribe(data => { 
+        this.modelAlbum = data 
+        this.toastr.success('Información actualizada','Exito !!!');
+        this.router.navigate(['/']);
+      },
+      err => {
+        console.log( err );
+        this.toastr.error(err.error.mensaje, 'Error');
+      });      
     }
   }
 

@@ -25,7 +25,7 @@
                     <td>{{ album.genero }}</td>
                     <td>{{ album.precio | currency}}</td>
                     <td>
-                        <button (click)="editar(album.id)" class="btn btn-warning">Editar</button>
+                        <a class="btn btn-warning" role="button" routerLink="registrar/{{ album.id }}">Editar</a>
                         <button (click)="eliminar(album)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
                     </td>
                 </tr>
