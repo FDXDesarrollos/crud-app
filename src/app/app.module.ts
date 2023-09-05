@@ -6,18 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListarComponent } from './crud/listar/listar.component';
 import { FormsModule } from '@angular/forms';
-import { RegistrarComponent } from './crud/registrar/registrar.component';
+import { FormularioComponent } from './crud/formulario/formulario.component';
 
 // external
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { DetalleComponent } from './crud/detalle/detalle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListarComponent,
-    RegistrarComponent
+    FormularioComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

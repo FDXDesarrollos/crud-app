@@ -7,11 +7,11 @@ import { Album } from 'src/app/modelo/album';
 
 
 @Component({
-  selector: 'app-registrar',
-  templateUrl: './registrar.component.html',
-  styleUrls: ['./registrar.component.css']
+  selector: 'app-formulario',
+  templateUrl: './formulario.component.html',
+  styleUrls: ['./formulario.component.css']
 })
-export class RegistrarComponent implements OnInit {
+export class FormularioComponent implements OnInit {
   modelAlbum = new Album();
   titulo!: string;
 

@@ -24,8 +24,9 @@
                     <td>{{ album.fecha | date: 'dd/MM/yyyy'}}</td>
                     <td>{{ album.genero }}</td>
                     <td>{{ album.precio | currency}}</td>
-                    <td>
-                        <a class="btn btn-warning" role="button" routerLink="registrar/{{ album.id }}">Editar</a>
+                    <td style="width: 300px;">
+                        <a class="btn btn-info" role="button" routerLink="detalle/{{ album.id }}">Detalle</a>
+                        <a class="btn btn-warning" role="button" routerLink="formulario/{{ album.id }}" style="margin-left: 10px;">Editar</a>
                         <button (click)="eliminar(album)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
                     </td>
                 </tr>

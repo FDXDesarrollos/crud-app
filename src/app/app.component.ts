@@ -14,9 +14,4 @@ export class AppComponent {
   listar(){
     this.router.navigate(['listar']);
   }
-
-  agregar(): void{
-    //localStorage.setItem('idAlbum', '0');
-    this.router.navigate(['registrar/0']);
-  }  
 }
